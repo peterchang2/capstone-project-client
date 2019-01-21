@@ -9,6 +9,8 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import WhiskeyIndex from './whiskeys/components/WhiskeyIndex'
+import WhiskeyShow from './whiskeys/components/WhiskeyShow'
+
 
 class App extends Component {
   constructor () {
@@ -41,7 +43,6 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
@@ -55,8 +56,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/whiskeys' render={() => (
+          <AuthenticatedRoute user={user} exact path='/whiskeys' render={() => (
             <WhiskeyIndex flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/whiskeys/:id' render={() => (
+            <WhiskeyShow flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>
