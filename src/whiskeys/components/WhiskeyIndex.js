@@ -35,18 +35,32 @@ class WhiskeyIndex extends Component {
 
     const whiskeys = this.state.whiskeys.map(whiskey => {
       return(
-        <li className='whiskey-list-items' key={whiskey.id}>
-          <Link to={`whiskeys/${whiskey.id}`}>
-            {whiskey.name} | {whiskey.country}
-          </Link>
-        </li>
+
+        <tbody key={whiskey.id}>
+          <tr>
+            <td>  <Link to={`whiskeys/${whiskey.id}`}>{whiskey.name}</Link></td>
+            <td>{whiskey.meta_critic}</td>
+            <td>{whiskey.country}</td>
+          </tr>
+        </tbody>        
       )
     })
 
     return (
       <React.Fragment>
-        <h1>Whiskey</h1>
-        <ul className='whiskey-list'>{whiskeys}</ul>
+        <h1 className='whiskey-header'>Whiskey</h1>
+        <table className="table-hover table-responsive whiskey-list">
+          <table className='table'>
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+                <th scope="col">Place of Origin</th>
+              </tr>
+            </thead>
+            {whiskeys}
+          </table>
+        </table>
       </React.Fragment>
     )
   }

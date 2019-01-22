@@ -18,6 +18,7 @@ const unauthenticatedOptions = (
   <React.Fragment>
     <button className='btn btn-info m-1'><Link to="/sign-up">Sign Up</Link></button>
     <button className='btn btn-light m-1'><Link to="/sign-in">Sign In</Link></button>
+
   </React.Fragment>
 )
 

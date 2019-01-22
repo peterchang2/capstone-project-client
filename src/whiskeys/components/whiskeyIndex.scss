@@ -1,8 +1,38 @@
+.container {
+  width: 85%;
+}
+.whiskey-name {
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .whiskey-list {
-  list-style: square outside;
+  width: 70%;
+  margin: 0 auto;
+}
+
+td {
+    width:33%; // 3 evenly sized columns
 }
 
 .whiskey-list-items {
   text-decoration: none;
   color: black;
+}
+
+.whiskey-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.whiskey-sub-description {
+  margin-bottom: 0px;
+  text-align: left;
+}
+
+.block {
+  display: block;
 }

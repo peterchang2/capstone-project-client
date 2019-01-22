@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 import {whiskeyShow} from '../api'
 import {Link, Redirect, Route} from 'react-router-dom'
-
+import './whiskeyShow.scss'
 
 class WhiskeyShow extends Component {
   constructor (props) {
@@ -36,24 +36,26 @@ class WhiskeyShow extends Component {
     const { name, country, cost, whiskey_type, whiskey_class, meta_critic } = whiskey
     return (
       <React.Fragment>
-        <h3>{name}</h3>
-        <p>Country: {country}</p>
-        <p>Review: {meta_critic}</p>
-        <p>Cost: {cost}</p>
-        <p>Type: {whiskey_type}</p>
-        <p>Class: {whiskey_class}</p>
-        <ul>
-          <p>Legend</p>
-          <li>$ is for whiskies less than $25 USD</li>
-          <li>$$ for whiskies between $25~$40 USD</li>
-          <li>$$$ for whiskies between $40-$55 USD</li>
-          <li>$$$$ for whiskies between $55~$95 USD</li>
-          <li>$$$$$ for whiskies between $95~$225 USD</li>
-          <li>$$$$$+ refers to all whiskies greater than $225 USD</li>
-        </ul>
+        <div className="card text-white bg-secondary mb-3">
+          <div className="whiskey-card-header card-header">{name}</div>
+          <div className="whiskey-description card-body">
+            <p className="card-text">Country: {country}</p>
+            <p className="card-text">Review: {meta_critic}</p>
+            <p className="card-text">Cost: {cost}</p>
+            <p className="card-text">Type: {whiskey_type}</p>
+            <p className="card-text">Class: {whiskey_class}</p>
+          </div>
+        </div>
         <button className='btn btn-warning m-1'><Link to='/whiskeys'>Back</Link></button>
-        <button className='btn btn-dark m-1'><Link to='/whiskeys/favorites'>Faves</Link></button>
-        <button className='btn btn-dark m-1'><Link to='/whiskeys/wishes'>Wishes</Link></button>
+        <button className='btn btn-dark m-1'><Link to='/whiskeys/favorites'>Add to Faves</Link></button>
+        <button className='btn btn-dark m-1'><Link to='/whiskeys/wishes'>Add to Wishes</Link></button>
+        <small className='block'>
+          <strong>$$</strong> for whiskies between $25~$40 USD |
+          <strong> $$$</strong> for whiskies between $40-$55 USD |
+          <strong> $$$$</strong> for whiskies between $55~$95 USD |
+          <strong> $$$$$</strong> for whiskies between $95~$225 USD |
+          <strong> $$$$$+</strong> refers to all whiskies greater than $225 USD
+        </small>
       </React.Fragment>
     )
   }
