@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { whiskeysIndex } from '../api'
-// import apiUrl from '../../apiConfig'
 import { Link, withRouter } from 'react-router-dom'
 import './whiskeyIndex.scss'
 
-class WhiskeyIndex extends Component {
 
+class WhiskeyIndex extends Component {
   constructor (props) {
     super(props)
     // console.log(props)
@@ -23,11 +22,6 @@ class WhiskeyIndex extends Component {
       .catch(() => console.error('BIG TIME ERROR'))
   }
 
-  // for later
-  // <div key={whiskey.id}>
-  //   <Link to={`/whiskeys/${whiskey.id}/show`}></Link>
-  // </div>
-
   render () {
     if (this.state.whiskeys.length == 0) {
       return <p>Loading all the delicious whiskeys...</p>
@@ -35,31 +29,28 @@ class WhiskeyIndex extends Component {
 
     const whiskeys = this.state.whiskeys.map(whiskey => {
       return(
-
         <tbody key={whiskey.id}>
           <tr>
-            <td>  <Link to={`whiskeys/${whiskey.id}`}>{whiskey.name}</Link></td>
+            <td><Link to={`whiskeys/${whiskey.id}`}>{whiskey.name}</Link></td>
             <td>{whiskey.meta_critic}</td>
             <td>{whiskey.country}</td>
           </tr>
-        </tbody>        
+        </tbody>
       )
     })
 
     return (
       <React.Fragment>
         <h1 className='whiskey-header'>Whiskey</h1>
-        <table className="table-hover table-responsive whiskey-list">
-          <table className='table'>
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Score</th>
-                <th scope="col">Place of Origin</th>
-              </tr>
-            </thead>
-            {whiskeys}
-          </table>
+        <table className="table table-hover table-responsive whiskey-list">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Score</th>
+              <th scope="col">Place of Origin</th>
+            </tr>
+          </thead>
+          {whiskeys}
         </table>
       </React.Fragment>
     )
