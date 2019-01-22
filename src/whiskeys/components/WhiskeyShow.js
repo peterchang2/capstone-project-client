@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router'
 import {whiskeyShow} from '../api'
 import {Link, Redirect, Route} from 'react-router-dom'
+import apiUrl from '../../apiConfig'
 import './whiskeyShow.scss'
 
 class WhiskeyShow extends Component {
@@ -26,6 +27,52 @@ class WhiskeyShow extends Component {
       .catch(() => this.setState({notFound: true}))
   }
 
+  addToFavorite = event => {
+    event.preventDefault()
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token token=${this.state.user.token}`
+      },
+      body: JSON.stringify({
+        'favorite': {
+          'user_id': this.state.user.id,
+          'whiskey_id': this.state.whiskey.id
+        }
+      })
+    }
+    const id = this.props.match.params.id
+    fetch(`${apiUrl}/favorites`, options)
+      .then(res => res.ok ? res : new Error())
+      .then(res => res.json())
+      .then(data => this.setState({id: id}))
+      .catch(console.error)
+  }
+
+  addToWishList = event => {
+    event.preventDefault()
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token token=${this.state.user.token}`
+      },
+      body: JSON.stringify({
+        'wish': {
+          'user_id': this.state.user.id,
+          'whiskey_id': this.state.whiskey.id
+        }
+      })
+    }
+    const id = this.props.match.params.id
+    fetch(`${apiUrl}/wishes`, options)
+      .then(res => res.ok ? res : new Error())
+      .then(res => res.json())
+      .then(data => this.setState({id: id}))
+      .catch(console.error)
+  }
+
   render () {
     const { whiskey, notFound } = this.state
 
@@ -47,8 +94,8 @@ class WhiskeyShow extends Component {
           </div>
         </div>
         <button className='btn btn-warning m-1'><Link to='/whiskeys'>Back</Link></button>
-        <button className='btn btn-dark m-1'><Link to='/whiskeys/favorites'>Add to Faves</Link></button>
-        <button className='btn btn-dark m-1'><Link to='/whiskeys/wishes'>Add to Wishes</Link></button>
+        <button className='btn btn-dark m-1' onClick={this.addToFavorite}>Add to Faves</button>
+        <button className='btn btn-dark m-1' onClick={this.addToWishList}>Add to Wishes</button>
         <small className='block'>
           <strong>$$</strong> for whiskies between $25~$40 USD |
           <strong> $$$</strong> for whiskies between $40-$55 USD |
@@ -59,7 +106,6 @@ class WhiskeyShow extends Component {
       </React.Fragment>
     )
   }
-
 }
 
 export default withRouter(WhiskeyShow)
