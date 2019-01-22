@@ -10,6 +10,8 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import WhiskeyIndex from './whiskeys/components/WhiskeyIndex'
 import WhiskeyShow from './whiskeys/components/WhiskeyShow'
+import FavoriteList from './whiskeys/components/FavoriteList'
+import WishList from './whiskeys/components/WishList'
 
 
 class App extends Component {
@@ -61,6 +63,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/whiskeys/:id' render={() => (
             <WhiskeyShow flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/favorites' render={() => (
+            <FavoriteList flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/wishes' render={() => (
+            <WishList flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>
