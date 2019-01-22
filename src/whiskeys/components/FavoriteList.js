@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { favoritesIndex } from '../api'
+import apiUrl from '../../apiConfig'
 
 class FavoriteList extends Component {
   constructor(props) {
     super(props)
     this.state = {
       favorites: [],
-      user: props.user
+      id: '',
+      user: props.user,
+      deleted: false
     }
   }
 
@@ -17,6 +20,17 @@ class FavoriteList extends Component {
       .then(res => res.json())
       .then(data => this.setState({ favorites: data.favorites }))
       .catch(() => console.error('BIG TIME ERROR'))
+  }
+
+  handleDelete = event => {
+    const options = {
+      method: 'DELETE'
+    }
+    const id = event.currentTarget.dataset.id
+    fetch(`${apiUrl}/favorites/${id}`, options)
+      .then(res => res.ok ? res : new Error())
+      .then(() => this.setState({deleted: true}))
+      .catch(console.error)
   }
 
   render () {
@@ -31,11 +45,11 @@ class FavoriteList extends Component {
             <td>{favorite.whiskey.name}</td>
             <td>{favorite.whiskey.meta_critic}</td>
             <td>{favorite.whiskey.country}</td>
+            <td><button className='btn btn-danger' data-id ={favorite.id} onClick={this.handleDelete}>Delete</button></td>
           </tr>
         </tbody>
       )
     })
-
     return (
       <React.Fragment>
         <h1 className='favorite-header'>My Favorites</h1>
@@ -45,6 +59,7 @@ class FavoriteList extends Component {
               <th scope="col">Name</th>
               <th scope="col">Score</th>
               <th scope="col">Place of Origin</th>
+              <th scope='col'>Delete</th>
             </tr>
           </thead>
           {favorites}
