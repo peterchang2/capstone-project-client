@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { favoriteIndex } from '../api'
-
-
+import { favoritesIndex } from '../api'
 
 class FavoriteList extends Component {
   constructor(props) {
@@ -14,11 +12,10 @@ class FavoriteList extends Component {
   }
 
   componentDidMount () {
-    favoriteIndex(this.state)
+    favoritesIndex(this.state)
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({ favorites: data.favorites }))
-      .then(data => console.log(data))
       .catch(() => console.error('BIG TIME ERROR'))
   }
 
@@ -26,7 +23,7 @@ class FavoriteList extends Component {
     if (this.state.favorites.length == 0) {
       return <p>Loading all the delicious favorites...</p>
     }
-    
+
     const favorites = this.state.favorites.map(favorite => {
       return(
         <tbody key={favorite.id}>
