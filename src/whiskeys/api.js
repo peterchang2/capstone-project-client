@@ -19,3 +19,13 @@ export const whiskeyShow = (credentials, id) => {
     }
   })
 }
+
+export const favoriteIndex = (credentials) => {
+  return fetch (apiUrl + '/favorites', {
+    method: 'GET',
+    header: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token token=${credentials.user.token}`
+    }
+  })
+}
