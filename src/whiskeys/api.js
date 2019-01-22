@@ -20,8 +20,18 @@ export const whiskeyShow = (credentials, id) => {
   })
 }
 
-export const favoriteIndex = (credentials) => {
+export const favoritesIndex = (credentials) => {
   return fetch (apiUrl + '/favorites', {
+    method: 'GET',
+    header: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token token=${credentials.user.token}`
+    }
+  })
+}
+
+export const wishesIndex = (credentials) => {
+  return fetch (apiUrl + '/wishes', {
     method: 'GET',
     header: {
       'Content-Type': 'application/json',
