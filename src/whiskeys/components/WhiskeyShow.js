@@ -38,7 +38,8 @@ class WhiskeyShow extends Component {
       body: JSON.stringify({
         'favorite': {
           'user_id': this.state.user.id,
-          'whiskey_id': this.state.whiskey.id
+          'whiskey_id': this.state.whiskey.id,
+          'user_score': 0
         }
       })
     }
@@ -76,7 +77,7 @@ class WhiskeyShow extends Component {
   render () {
     const { whiskey, notFound } = this.state
 
-    if(notFound) {
+    if(notFound === true) {
       return <Redirect to='/whiskeys' />
     }
 
