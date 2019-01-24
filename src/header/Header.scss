@@ -1,4 +1,6 @@
 $charcoal: #bbb;
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+
 
 .main-header {
   align-items: center;
@@ -48,4 +50,18 @@ $charcoal: #bbb;
       width: 80%;
     }
   }
+}
+
+.sign-in-btn {
+  background-color: #edd9b2;
+}
+
+.sign-up-btn {
+  background-color: #ead3d6;
+}
+
+.site-name {
+  font-family: 'Kaushan Script', cursive;
+  color: #352f3f;
+  text-decoration: none;
 }
