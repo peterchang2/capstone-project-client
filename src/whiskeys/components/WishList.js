@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import {Link, withRouter, Redirect } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import { wishesIndex } from '../api'
 import apiUrl from '../../apiConfig'
+import axios from 'axios'
 
 class WishList extends Component {
   constructor(props) {
@@ -25,18 +26,24 @@ class WishList extends Component {
 
   handleDelete = event => {
     const options = {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {'Authorization': `Token token=${this.state.user.token}`}
     }
     const id = event.currentTarget.dataset.id
     fetch(`${apiUrl}/wishes/${id}`, options)
       .then(res => res.ok ? res : new Error())
-      .then(() => this.setState({deleted: true}))
+      .then(() => this.setState({ deleted: true }))
+      .then(() => this.props.history.push('/wishes'))
       .catch(console.error)
   }
 
+
   render () {
     if (this.state.wishes.length == 0) {
-      return <p>Wish List Loading...</p>
+      return <p>No More Wish List items</p>
+    } else if (this.state.deleted === true) {
+      console.log('HELP pls')
+
     }
 
     const wishes = this.state.wishes.map(wish => {
