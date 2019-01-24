@@ -30,7 +30,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <header className="main-header">
 
-    <Link to="/"><h1 className='site-name'>Ask Whiskey Pete</h1></Link>
+    <Link to="/"><h1 className='site-name'>WhiskeyVerse</h1></Link>
     <nav>
       { user && <span>Welcome, {user.email}</span>}
       { alwaysOptions }
