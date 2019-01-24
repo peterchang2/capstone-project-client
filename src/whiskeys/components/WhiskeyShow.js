@@ -40,8 +40,8 @@ class WhiskeyShow extends Component {
       body: JSON.stringify({
         'favorite': {
           'user_id': this.state.user.id,
-          'whiskey_id': this.state.whiskey.id,
-          'user_score': 0
+          'whiskey_id': this.state.whiskey.id
+
         }
       })
     }
