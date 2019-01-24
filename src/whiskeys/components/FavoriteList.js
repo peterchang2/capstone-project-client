@@ -24,7 +24,7 @@ class FavoriteList extends Component {
       .then(res => res.json())
       .then(data => this.setState({ favorites: data.favorites }))
       // .then(() => flash(messages.getAllFavoritesSuccess, 'flash-success'))
-      .catch(() => console.error('BIG TIME ERROR'))
+      .catch(() => flash(messages.getAllFailure, 'flash-error'))
   }
 
   // handleDelete = event => {

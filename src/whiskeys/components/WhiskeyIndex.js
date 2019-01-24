@@ -20,7 +20,7 @@ class WhiskeyIndex extends Component {
       .then(res => res.json())
       .then(data => this.setState({ whiskeys: data.whiskeys }))
       .then(() => flash(messages.getAllWhiskeysSuccess, 'flash-success'))
-      .catch(() => console.error('BIG TIME ERROR'))
+      .catch(() => flash(messages.getAllFailure, 'flash-error'))
   }
 
   render () {

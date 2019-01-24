@@ -51,7 +51,7 @@ class WhiskeyShow extends Component {
       .then(res => res.json())
       .then(data => this.setState({id: id}))
       .then(() => flash(messages.addToFavoriteSuccess, 'flash-success'))
-      .catch(console.error)
+      .catch(() => flash(messages.addToFavoriteFailure, 'flash-error'))
   }
 
   addToWishList = event => {
@@ -76,7 +76,7 @@ class WhiskeyShow extends Component {
       .then(res => res.json())
       .then(data => this.setState({id: id}))
       .then(() => flash(messages.addToWishListSuccess, 'flash-success'))
-      .catch(console.error)
+      .catch(() => flash(messages.addToWishListFailure, 'flash-error'))
   }
 
   render () {

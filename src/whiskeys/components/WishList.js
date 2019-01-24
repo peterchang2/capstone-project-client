@@ -25,7 +25,7 @@ class WishList extends Component {
       .then(res => res.json())
       .then(data => this.setState({ wishes: data.wishes }))
       // .then(() => flash(messages.getAllWishListSuccess, 'flash-success'))
-      .catch(() => console.error('BIG TIME ERROR'))
+      .catch(() => flash(messages.getAllFailure, 'flash-error'))
   }
 
   // handleDelete = event => {
@@ -47,11 +47,8 @@ class WishList extends Component {
   render () {
     if (this.state.wishes.length == 0) {
       return <p className='pop-up'>No More Wish List items</p>
-    } else if (this.state.deleted === true) {
-      console.log('HELP pls')
-
     }
-
+    
     const wishes = this.state.wishes.map(wish => {
       return(
         <tbody key={wish.id}>

@@ -30,11 +30,6 @@ class FavoriteEdit extends Component {
       .then(data => this.setState( { favorite: data.favorite, id: id, created: true } ))
       .catch(() => this.setState({notFound: true}))
   }
-  // const tests = this.state.favorite.map(favorite => {
-  //   return (
-  //     console.log(favorite.whiskey.name)
-  //   )
-  // })
 
   handleDelete = event => {
     const { flash } = this.props
@@ -49,13 +44,11 @@ class FavoriteEdit extends Component {
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ deleted: true }))
       .then(() => flash(messages.deleteSuccess, 'flash-success'))
-      .catch(console.error)
+      .catch(() => flash(messages.deleteFailure, 'flash-error'))
   }
 
   handleChange = event => {
     const editedUserScore = { ...this.state.favorite, [event.target.id]: event.target.value }
-    console.log(editedUserScore, event.target.option)
-
     this.setState({ favorite: editedUserScore })
   }
 
@@ -76,7 +69,7 @@ class FavoriteEdit extends Component {
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ updated: true }))
       .then(() => flash(messages.user_scoreUpdate, 'flash-success'))
-      .catch(console.error)
+      .catch(() => flash(messages.updateFailure, 'flash-error'))
   }
 
 

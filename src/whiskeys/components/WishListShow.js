@@ -40,7 +40,7 @@ class WishListShow extends Component {
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ deleted: true }))
       .then(() => flash(messages.deleteSuccess, 'flash-success'))
-      .catch(console.error)
+      .catch(() => flash(messages.deleteFailure, 'flash-error'))
   }
 
   render () {
