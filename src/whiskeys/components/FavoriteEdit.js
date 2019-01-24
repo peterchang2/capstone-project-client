@@ -30,12 +30,7 @@ class FavoriteEdit extends Component {
       .then(data => this.setState( { favorite: data.favorite, id: id, created: true } ))
       .catch(() => this.setState({notFound: true}))
   }
-  // const tests = this.state.favorite.map(favorite => {
-  //   return (
-  //     console.log(favorite.whiskey.name)
-  //   )
-  // })
-
+  
   handleDelete = event => {
     const { flash } = this.props
     event.preventDefault()
@@ -54,8 +49,6 @@ class FavoriteEdit extends Component {
 
   handleChange = event => {
     const editedUserScore = { ...this.state.favorite, [event.target.id]: event.target.value }
-    console.log(editedUserScore, event.target.option)
-
     this.setState({ favorite: editedUserScore })
   }
 

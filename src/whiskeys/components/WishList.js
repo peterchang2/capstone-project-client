@@ -47,11 +47,7 @@ class WishList extends Component {
   render () {
     if (this.state.wishes.length == 0) {
       return <p className='pop-up'>No More Wish List items</p>
-    } else if (this.state.deleted === true) {
-      console.log('HELP pls')
-
     }
-
     const wishes = this.state.wishes.map(wish => {
       return(
         <tbody key={wish.id}>
