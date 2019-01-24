@@ -50,6 +50,7 @@ class WhiskeyShow extends Component {
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({id: id}))
+      .then(() => flash(messages.addToFavoriteSuccess, 'flash-success'))
       .catch(console.error)
   }
 
