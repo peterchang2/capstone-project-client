@@ -38,7 +38,7 @@ class WhiskeyShow extends Component {
         'Authorization': `Token token=${this.state.user.token}`
       },
       body: JSON.stringify({
-        'favorites': {
+        'favorite': {
           'user_id': this.state.user.id,
           'whiskey_id': this.state.whiskey.id,
           'user_score': 0
