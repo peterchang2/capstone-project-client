@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import { favoriteShow } from '../api'
 import { Link, Redirect, Route } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
+import messages from '../messages'
 
 
 class FavoriteEdit extends Component {
@@ -36,6 +37,7 @@ class FavoriteEdit extends Component {
   // })
 
   handleDelete = event => {
+    const { flash } = this.props
     event.preventDefault()
     const options = {
       method: 'DELETE',
@@ -46,6 +48,7 @@ class FavoriteEdit extends Component {
     fetch(`${apiUrl}/favorites/${this.state.favorite.id}`, options)
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ deleted: true }))
+      .then(() => flash(messages.deleteSuccess, 'flash-success'))
       .catch(console.error)
   }
 
@@ -57,6 +60,7 @@ class FavoriteEdit extends Component {
   }
 
   handleUpdate = event => {
+    const { flash } = this.props
     event.preventDefault()
     const options = {
       method: 'PATCH',
@@ -71,6 +75,7 @@ class FavoriteEdit extends Component {
     fetch(`${apiUrl}/favorites/${this.state.favorite.id}`, options)
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ updated: true }))
+      .then(() => flash(messages.user_scoreUpdate, 'flash-success'))
       .catch(console.error)
   }
 
@@ -90,8 +95,8 @@ class FavoriteEdit extends Component {
             <div className="whiskey-description card-body">
               <p className="card-text">Place of Origin: {favorite.country}</p>
               <p className="card-text">Cost: {favorite.cost}</p>
-              <p className="card-text">Review: {favorite.meta_critic}</p>
-              <p className="card-text">Review: {this.state.favorite.user_score}</p>
+              <p className="card-text">Meta-Critic: {favorite.meta_critic}</p>
+              <p className="card-text">User-Score: {this.state.favorite.user_score}</p>
             </div>
             <form onSubmit={this.handleUpdate}>
               <label>Score:</label>
@@ -113,7 +118,7 @@ class FavoriteEdit extends Component {
               <button className='btn btn-danger' data-id={favorite.id} onClick={this.handleDelete}>Delete</button>
             </form>
           </div>
-
+          <small className='block'><strong>MetaCritic</strong> score refers to average normalized score of all reviewers who have reported on that whiskiy.</small>
           <small className='block'>
             <strong>$$</strong> for whiskies between $25~$40 USD |
             <strong> $$$</strong> for whiskies between $40-$55 USD |
@@ -124,11 +129,9 @@ class FavoriteEdit extends Component {
         </React.Fragment>
       )
     }
-    console.log('array of whiskey', this.state.favorite.whiskey)
 
     return (
       <React.Fragment>
-        <h4>hello</h4>
 
       </React.Fragment>
     )
