@@ -16,3 +16,14 @@
   font-weight: bold;
   font-size: 20px;
 }
+
+button:hover {
+  color: green;
+}
+
+a {
+  color: black;
+  &:hover {
+    color: white;
+  }
+}
