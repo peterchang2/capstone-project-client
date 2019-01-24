@@ -3,6 +3,7 @@ import {withRouter} from 'react-router'
 import {whiskeyShow} from '../api'
 import {Link, Redirect, Route} from 'react-router-dom'
 import apiUrl from '../../apiConfig'
+import messages from '../messages'
 import './whiskeyShow.scss'
 
 class WhiskeyShow extends Component {
@@ -28,6 +29,7 @@ class WhiskeyShow extends Component {
   }
 
   addToFavorite = event => {
+    const { flash } = this.props
     event.preventDefault()
     const options = {
       method: 'POST',
@@ -48,10 +50,12 @@ class WhiskeyShow extends Component {
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({id: id}))
+      .then(() => flash(messages.addToFavoriteSuccess, 'flash-success'))
       .catch(console.error)
   }
 
   addToWishList = event => {
+    const { flash } = this.props
     event.preventDefault()
     const options = {
       method: 'POST',
@@ -71,6 +75,7 @@ class WhiskeyShow extends Component {
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({id: id}))
+      .then(() => flash(messages.addToWishListSuccess, 'flash-success'))
       .catch(console.error)
   }
 
@@ -97,6 +102,8 @@ class WhiskeyShow extends Component {
         <button className='btn btn-warning m-1'><Link to='/whiskeys'>Back</Link></button>
         <button className='btn btn-dark m-1' onClick={this.addToFavorite}>Add to Faves</button>
         <button className='btn btn-dark m-1' onClick={this.addToWishList}>Add to Wishes</button>
+        <small className='block'><strong>MetaCritic</strong> score refers to average normalized score of all reviewers who have reported on that whiskiy.</small>
+
         <small className='block'>
           <strong>$$</strong> for whiskies between $25~$40 USD |
           <strong> $$$</strong> for whiskies between $40-$55 USD |
