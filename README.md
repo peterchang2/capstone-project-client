@@ -25,7 +25,7 @@ Once the user sign up and sign in, the user can browse a Whiskey List and add an
 * SASS
 
 ### Screenshot
-![screenshot](https://i.imgur.com/7k2oFBz.png?1)
+![screenshot](https://i.imgur.com/ZXDCfjT.png?1)
 
 ### Wireframes
 ![wireframes](https://i.imgur.com/ol8DMl8.jpg?2)
