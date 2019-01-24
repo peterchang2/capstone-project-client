@@ -44,7 +44,7 @@ class FavoriteEdit extends Component {
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ deleted: true }))
       .then(() => flash(messages.deleteSuccess, 'flash-success'))
-      .catch(console.error)
+      .catch(() => flash(messages.deleteFailure, 'flash-error'))
   }
 
   handleChange = event => {
@@ -69,7 +69,7 @@ class FavoriteEdit extends Component {
       .then(res => res.ok ? res : new Error())
       .then(() => this.setState({ updated: true }))
       .then(() => flash(messages.user_scoreUpdate, 'flash-success'))
-      .catch(console.error)
+      .catch(() => flash(messages.updateFailure, 'flash-error'))
   }
 
 
