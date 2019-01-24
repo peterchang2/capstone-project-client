@@ -13,6 +13,7 @@ import WhiskeyShow from './whiskeys/components/WhiskeyShow'
 import FavoriteEdit from './whiskeys/components/FavoriteEdit'
 import FavoriteList from './whiskeys/components/FavoriteList'
 import WishList from './whiskeys/components/WishList'
+import WishListShow from './whiskeys/components/WishListShow'
 
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
     clearTimeout(this.messageTimeout)
 
     this.messageTimeout = setTimeout(() => this.setState({flashMessage: null
-    }), 800)
+    }), 1000)
   }
 
   render () {
@@ -73,6 +74,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/wishes' render={() => (
             <WishList flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/wishes/:id' render={() => (
+            <WishListShow flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>
