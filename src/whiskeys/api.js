@@ -49,3 +49,13 @@ export const wishesIndex = (credentials) => {
     }
   })
 }
+
+export const wishListShow = (credentials, id) => {
+  return fetch (apiUrl + `/wishes/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token token=${credentials.user.token}`
+    }
+  })
+}
