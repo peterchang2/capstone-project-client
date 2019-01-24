@@ -40,8 +40,8 @@ class SignIn extends Component {
     return (
       <form className='auth-form' onSubmit={this.signIn}>
         <h3>Sign In</h3>
-        <label htmlFor="email">Email</label>
-        <input
+        <label htmlFor="email"></label>
+        <input className='input-field'
           required
           type="email"
           name="email"
@@ -49,8 +49,8 @@ class SignIn extends Component {
           placeholder="Email"
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <label htmlFor="password"></label>
+        <input className='input-field'
           required
           name="password"
           value={password}

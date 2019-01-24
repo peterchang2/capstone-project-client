@@ -39,8 +39,8 @@ class ChangePassword extends Component {
       <form className='auth-form' onSubmit={this.changePassword}>
         <h3>Change Password</h3>
 
-        <label htmlFor="oldpw">Old Password</label>
-        <input
+        <label htmlFor="oldpw"></label>
+        <input className='input-field'
           required
           name="oldPassword"
           value={oldPassword}
@@ -48,8 +48,8 @@ class ChangePassword extends Component {
           placeholder="Old Password"
           onChange={this.handleChange}
         />
-        <label htmlFor="newPassword">New Password</label>
-        <input
+        <label htmlFor="newPassword"></label>
+        <input className='input-field'
           required
           name="newPassword"
           value={newPassword}
