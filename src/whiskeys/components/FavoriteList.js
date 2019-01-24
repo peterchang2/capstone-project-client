@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { favoritesIndex } from '../api'
 import apiUrl from '../../apiConfig'
+import messages from '../messages'
+import './favoriteList.scss'
 
 class FavoriteList extends Component {
   constructor(props) {
@@ -16,10 +18,12 @@ class FavoriteList extends Component {
   }
 
   componentDidMount () {
+    const { flash } = this.props
     favoritesIndex(this.state)
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({ favorites: data.favorites }))
+      // .then(() => flash(messages.getAllFavoritesSuccess, 'flash-success'))
       .catch(() => console.error('BIG TIME ERROR'))
   }
 
@@ -67,19 +71,19 @@ class FavoriteList extends Component {
 
   render () {
     if (this.state.favorites.length == 0) {
-      return <p>Loading all the delicious favorites...</p>
+      return <p className='pop-up'>Empty Favorites, Browse the Whiskey List To Find What You Like</p>
     }
 
     const favorites = this.state.favorites.map(favorite => {
       return(
         <tbody key={favorite.id}>
           <tr>
-            <td><Link to={`favorites/${favorite.id}`}>{favorite.whiskey.name}</Link></td>
-            <td>{favorite.whiskey.meta_critic}</td>
-            <td>
-              <span className="badge badge-pill badge-warning">{favorite.user_score}</span>
+            <td className='favorite-td'><Link to={`favorites/${favorite.id}`}>{favorite.whiskey.name}</Link></td>
+            <td className='favorite-td'>{favorite.whiskey.meta_critic}</td>
+            <td className='favorite-td'>
+              <span className="user-score-text badge badge-pill badge-warning badge-lg">{favorite.user_score}</span>
             </td>
-            <td>{favorite.whiskey.country}</td>
+            <td className='favorite-td'>{favorite.whiskey.country}</td>
           </tr>
         </tbody>
       )
@@ -90,10 +94,10 @@ class FavoriteList extends Component {
         <table className="table table-hover table-responsive favorite-list">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Meta Critic</th>
-              <th scope='col'>User Score</th>
-              <th scope="col">Place of Origin</th>
+              <th className='favorite-th' scope="col">Name</th>
+              <th className='favorite-th' scope="col">Meta Critic</th>
+              <th className='favorite-th' scope='col'>User Score</th>
+              <th className='favorite-th' scope="col">Place of Origin</th>
             </tr>
           </thead>
           {favorites}
