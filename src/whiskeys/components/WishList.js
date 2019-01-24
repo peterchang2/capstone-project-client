@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import { wishesIndex } from '../api'
 import apiUrl from '../../apiConfig'
+import messages from '../messages'
 import axios from 'axios'
+import './wishList.scss'
 
 class WishList extends Component {
   constructor(props) {
@@ -16,31 +18,35 @@ class WishList extends Component {
   }
 
   componentDidMount () {
+    const { flash } = this.props
     const id = this.props.match.params.id
     wishesIndex(this.state)
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(data => this.setState({ wishes: data.wishes }))
+      // .then(() => flash(messages.getAllWishListSuccess, 'flash-success'))
       .catch(() => console.error('BIG TIME ERROR'))
   }
 
-  handleDelete = event => {
-    const options = {
-      method: 'DELETE',
-      headers: {'Authorization': `Token token=${this.state.user.token}`}
-    }
-    const id = event.currentTarget.dataset.id
-    fetch(`${apiUrl}/wishes/${id}`, options)
-      .then(res => res.ok ? res : new Error())
-      .then(() => this.setState({ deleted: true }))
-      .then(() => this.props.history.push('/wishes'))
-      .catch(console.error)
-  }
+  // handleDelete = event => {
+  //   const { flash } = this.props
+  //   const options = {
+  //     method: 'DELETE',
+  //     headers: {'Authorization': `Token token=${this.state.user.token}`}
+  //   }
+  //   const id = event.currentTarget.dataset.id
+  //   fetch(`${apiUrl}/wishes/${id}`, options)
+  //     .then(res => res.ok ? res : new Error())
+  //     .then(() => this.setState({ deleted: true }))
+  //     .then(() => flash(messages.deleteSuccess, 'flash-success'))
+  //     .then(() => this.props.history.push('/wishes'))
+  //     .catch(console.error)
+  // }
 
 
   render () {
     if (this.state.wishes.length == 0) {
-      return <p>No More Wish List items</p>
+      return <p className='pop-up'>No More Wish List items</p>
     } else if (this.state.deleted === true) {
       console.log('HELP pls')
 
@@ -50,10 +56,9 @@ class WishList extends Component {
       return(
         <tbody key={wish.id}>
           <tr>
-            <td>{wish.whiskey.name}</td>
-            <td>{wish.whiskey.meta_critic}</td>
-            <td>{wish.whiskey.country}</td>
-            <td><button className='btn btn-danger' data-id ={wish.id} onClick={this.handleDelete}>Delete</button></td>
+            <td className='wishes-td'><Link to={`wishes/${wish.id}`}>{wish.whiskey.name}</Link></td>
+            <td className='wishes-td'>{wish.whiskey.meta_critic}</td>
+            <td className='wishes-td'>{wish.whiskey.country}</td>
           </tr>
         </tbody>
       )
@@ -64,10 +69,9 @@ class WishList extends Component {
         <table className="table table-hover table-responsive wish-list">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Score</th>
-              <th scope="col">Place of Origin</th>
-              <th scope='col'>Delete</th>
+              <th className='wishes-th' scope="col">Name</th>
+              <th className='wishes-th' scope="col">Score</th>
+              <th className='wishes-th' scope="col">Place of Origin</th>
             </tr>
           </thead>
           {wishes}
