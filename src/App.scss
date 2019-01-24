@@ -6,15 +6,17 @@ $charcoal: #ccc;
 .flash-success,
 .flash-warning,
 .flash-error {
+  margin-top: 50px;
   border: 1px solid $charcoal;
   display: block;
   left: 25%;
-  padding: 30px;
+  padding: 50px;
   position: fixed;
   text-align: center;
   top: 15%;
   width: 50%;
   z-index: 1;
+  border-radius: 125px;
 }
 
 .flash-success {
@@ -29,11 +31,20 @@ $charcoal: #ccc;
   background-color: $error;
 }
 
+.input-field {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: transparent;
+  border-bottom: 2px solid #63766e;
+  outline: none;
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 15% auto 0;
+  margin: 50px auto 0;
   max-width: 600px;
 
   h3,
@@ -45,4 +56,8 @@ $charcoal: #ccc;
     align-self: flex-end;
     max-width: 200px;
   }
+}
+
+body {
+  background-color: #d3eae7;
 }

@@ -8,6 +8,13 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+import WhiskeyIndex from './whiskeys/components/WhiskeyIndex'
+import WhiskeyShow from './whiskeys/components/WhiskeyShow'
+import FavoriteEdit from './whiskeys/components/FavoriteEdit'
+import FavoriteList from './whiskeys/components/FavoriteList'
+import WishList from './whiskeys/components/WishList'
+import WishListShow from './whiskeys/components/WishListShow'
+
 
 class App extends Component {
   constructor () {
@@ -30,7 +37,7 @@ class App extends Component {
     clearTimeout(this.messageTimeout)
 
     this.messageTimeout = setTimeout(() => this.setState({flashMessage: null
-    }), 2000)
+    }), 1000)
   }
 
   render () {
@@ -40,7 +47,6 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-        
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
@@ -53,6 +59,24 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/whiskeys' render={() => (
+            <WhiskeyIndex flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/whiskeys/:id' render={() => (
+            <WhiskeyShow flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/favorites' render={() => (
+            <FavoriteList flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/favorites/:id' render={() => (
+            <FavoriteEdit flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/wishes' render={() => (
+            <WishList flash={this.flash} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/wishes/:id' render={() => (
+            <WishListShow flash={this.flash} user={user} />
           )} />
         </main>
       </React.Fragment>

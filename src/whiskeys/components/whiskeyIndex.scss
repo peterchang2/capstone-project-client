@@ -1,0 +1,49 @@
+.pop-up {
+  text-align: center;
+}
+
+.container {
+  width: 85%;
+}
+.whiskey-name {
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.whiskey-list {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.whiskey-td {
+    width:33%; // 3 evenly sized columns
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.whiskey-th {
+  text-align: center;
+}
+
+.whiskey-list-items {
+  text-decoration: none;
+  color: black;
+}
+
+.whiskey-header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.whiskey-sub-description {
+  margin-bottom: 0px;
+  text-align: left;
+}
+
+.block {
+  display: block;
+}

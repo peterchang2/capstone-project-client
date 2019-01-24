@@ -44,8 +44,8 @@ class SignUp extends Component {
       <form className='auth-form' onSubmit={this.signUp}>
         <h3>Sign Up</h3>
 
-        <label htmlFor="email">Email</label>
-        <input
+        <label htmlFor="email"></label>
+        <input className='input-field'
           required
           name="email"
           value={email}
@@ -53,8 +53,8 @@ class SignUp extends Component {
           placeholder="Email"
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
-        <input
+        <label htmlFor="password"></label>
+        <input className='input-field'
           required
           name="password"
           value={password}
@@ -62,8 +62,8 @@ class SignUp extends Component {
           placeholder="Password"
           onChange={this.handleChange}
         />
-        <label htmlFor="passwordConfirmation">Confirm Password</label>
-        <input
+        <label htmlFor="passwordConfirmation"></label>
+        <input className='input-field'
           required
           name="passwordConfirmation"
           value={passwordConfirmation}
