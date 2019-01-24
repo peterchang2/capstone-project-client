@@ -30,7 +30,7 @@ class FavoriteEdit extends Component {
       .then(data => this.setState( { favorite: data.favorite, id: id, created: true } ))
       .catch(() => this.setState({notFound: true}))
   }
-  
+
   handleDelete = event => {
     const { flash } = this.props
     event.preventDefault()
