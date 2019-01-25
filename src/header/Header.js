@@ -7,10 +7,10 @@ const authenticatedOptions = (
   <React.Fragment>
     <button className='btn btn-warning m-1'><Link to="/">Home</Link></button>
     <button className='btn btn-danger m-1'><Link to='/whiskeys'>Whiskey List</Link></button>
-    <button className='btn btn-dark m-1'><Link to='/favorites'>Favorites</Link></button>
+    <button className='btn btn-primary m-1'><Link to='/favorites'>Favorites</Link></button>
     <button className='btn btn-info m-1'><Link to='/wishes'>Wishes</Link></button>
     <button className='btn btn-success m-1'><Link to="/change-password">Change Password</Link></button>
-    <button className='btn btn-secondary m-1'><Link to="/sign-out">Sign Out</Link></button>
+    <button className='btn btn-danger m-1'><Link to="/sign-out">Sign Out</Link></button>
   </React.Fragment>
 )
 
