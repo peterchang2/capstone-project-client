@@ -94,6 +94,7 @@ class FavoriteEdit extends Component {
             <form onSubmit={this.handleUpdate}>
               <label>Score:</label>
               <select id="user_score" onChange={this.handleChange}>
+                <option name='-' value='-' className="dropdown-item" onChange={this.handleChange}>-</option>
                 <option name='1' value='1' className="dropdown-item" onChange={this.handleChange}>1</option>
                 <option name='2' value='2' className="dropdown-item" onChange={this.handleChange}>2</option>
                 <option name='3' value='3' className="dropdown-item" onChange={this.handleChange}>3</option>
