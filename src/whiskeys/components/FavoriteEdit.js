@@ -92,8 +92,8 @@ class FavoriteEdit extends Component {
               <p className="card-text">User-Score: {this.state.favorite.user_score}</p>
             </div>
             <form onSubmit={this.handleUpdate}>
-              <label>Score:</label>
-              <select id="user_score" onChange={this.handleChange}>
+              <label className='m-1'>Score: </label>
+              <select className='m-1' id="user_score" onChange={this.handleChange}>
                 <option name='-' value='-' className="dropdown-item" onChange={this.handleChange}>-</option>
                 <option name='0' value='0' className="dropdown-item" onChange={this.handleChange}>0</option>
                 <option name='1' value='1' className="dropdown-item" onChange={this.handleChange}>1</option>
@@ -109,7 +109,7 @@ class FavoriteEdit extends Component {
               </select>
               <button className='btn btn-danger m-1' data-id={favorite.id} type='submit'>Update</button>
               <button className='btn btn-warning m-1'><Link to='/favorites'>Back</Link></button>
-              <button className='btn btn-danger' data-id={favorite.id} onClick={this.handleDelete}>Delete</button>
+              <button className='btn btn-danger m-1' data-id={favorite.id} onClick={this.handleDelete}>Delete</button>
             </form>
           </div>
           <small className='block'><strong>MetaCritic</strong> score refers to average normalized score of all reviewers who have reported on that whiskiy.</small>

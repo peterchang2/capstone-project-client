@@ -5,19 +5,19 @@ import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
-    <button className='btn btn-warning m-1'><Link to="/">Home</Link></button>
-    <button className='btn btn-danger m-1'><Link to='/whiskeys'>Whiskey List</Link></button>
-    <button className='btn btn-primary m-1'><Link to='/favorites'>Favorites</Link></button>
-    <button className='btn btn-info m-1'><Link to='/wishes'>Wishes</Link></button>
-    <button className='btn btn-success m-1'><Link to="/change-password">Change Password</Link></button>
-    <button className='btn btn-danger m-1'><Link to="/sign-out">Sign Out</Link></button>
+    <Link className='btn btn-warning m-1' to="/">Home</Link>
+    <Link className='btn btn-danger m-1' to='/whiskeys'>Whiskey List</Link>
+    <Link className='btn btn-primary m-1' to='/favorites'>Favorites</Link>
+    <Link className='btn btn-info m-1' to='/wishes'>Wishes</Link>
+    <Link className='btn btn-success m-1' to="/change-password">Change Password</Link>
+    <Link className='btn btn-danger m-1' to="/sign-out">Sign Out</Link>
   </React.Fragment>
 )
 
 const unauthenticatedOptions = (
   <React.Fragment>
-    <button className='sign-up-btn btn m-1'><Link to="/sign-up">Sign Up</Link></button>
-    <button className='sign-in-btn btn m-1'><Link to="/sign-in">Sign In</Link></button>
+    <Link className='sign-up-btn btn m-1' to="/sign-up">Sign Up</Link>
+    <Link className='sign-in-btn btn m-1' to="/sign-in">Sign In</Link>
 
   </React.Fragment>
 )

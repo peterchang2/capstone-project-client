@@ -99,7 +99,7 @@ class WhiskeyShow extends Component {
             <p className="card-text">Class: {whiskey_class}</p>
           </div>
         </div>
-        <button className='btn btn-warning m-1'><Link to='/whiskeys'>Back</Link></button>
+        <Link className='btn btn-warning m-1' to='/whiskeys'>Back</Link>
         <button className='btn btn-dark m-1' onClick={this.addToFavorite}>Add to Faves</button>
         <button className='btn btn-dark m-1' onClick={this.addToWishList}>Add to Wishes</button>
         <small className='block'><strong>MetaCritic</strong> score refers to average normalized score of all reviewers who have reported on that whiskiy.</small>
