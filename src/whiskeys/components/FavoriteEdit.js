@@ -4,7 +4,7 @@ import { favoriteShow } from '../api'
 import { Link, Redirect, Route } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 import messages from '../messages'
-
+import './favoriteShow.scss'
 
 class FavoriteEdit extends Component {
   constructor (props) {
@@ -91,7 +91,7 @@ class FavoriteEdit extends Component {
               <p className="card-text">Meta-Critic: {favorite.meta_critic}</p>
               <p className="card-text">User-Score: {this.state.favorite.user_score}</p>
             </div>
-            <form onSubmit={this.handleUpdate}>
+            <form className='score-form' onSubmit={this.handleUpdate}>
               <label className='m-1'>Score: </label>
               <select className='m-1' id="user_score" onChange={this.handleChange}>
                 <option name='-' value='-' className="dropdown-item" onChange={this.handleChange}>-</option>
