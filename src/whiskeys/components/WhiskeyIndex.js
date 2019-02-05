@@ -3,13 +3,16 @@ import { whiskeysIndex } from '../api'
 import { Link, withRouter } from 'react-router-dom'
 import messages from '../messages'
 import './whiskeyIndex.scss'
+import MUIDataTable from 'mui-datatables'
+
 
 class WhiskeyIndex extends Component {
   constructor (props) {
     super(props)
     this.state = {
       whiskeys: [],
-      user: props.user
+      user: props.user,
+      searchText: ''
     }
   }
 
@@ -23,38 +26,42 @@ class WhiskeyIndex extends Component {
       .catch(() => flash(messages.getAllFailure, 'flash-error'))
   }
 
+
   render () {
     if (this.state.whiskeys.length == 0) {
       return <p className='pop-up'>Loading all the delicious whiskeys...</p>
     }
 
-    const whiskeys = this.state.whiskeys.map(whiskey => {
-      return(
-        <tbody key={whiskey.id}>
-          <tr>
-            <td className='whiskey-td'><Link key={whiskey.id} to={`whiskeys/${whiskey.id}`}>{whiskey.name}</Link></td>
-            <td className='whiskey-td'><Link key={whiskey.id} to={`whiskeys/${whiskey.id}`}>{whiskey.meta_critic}</Link></td>
-            <td className='whiskey-td'><Link key={whiskey.id} to={`whiskeys/${whiskey.id}`}>{whiskey.country}</Link></td>
-          </tr>
-        </tbody>
+    const columns = ['View', 'Name', 'Meta Critic', 'Country', 'Whiskey Type']
+
+    const options = {
+      responsive: 'scroll',
+      selectableRows: false,
+      filter: false
+    }
+
+    let data = {}
+    const whiskeyData = this.state.whiskeys.map(alcohol => {
+      return (
+        data = [
+          <Link key={alcohol.id} to={`whiskeys/${alcohol.id}`}>Click Here</Link>,
+          alcohol.name,
+          alcohol.meta_critic,
+          alcohol.country,
+          alcohol.whiskey_type
+        ]
       )
     })
 
     return (
-      <React.Fragment>
-        <h1 className='whiskey-header'>Whiskey</h1>
-        <table className="table table-hover table-responsive whiskey-list">
-          <thead>
-            <tr>
-              <th className='whiskey-th' scope="col">Name</th>
-              <th className='whiskey-th' scope="col">Score</th>
-              <th className='whiskey-th' scope="col">Place of Origin</th>
-            </tr>
-          </thead>
-          {whiskeys}
-        </table>
-      </React.Fragment>
+      <MUIDataTable
+        title={'All The Whiskeys'}
+        data={whiskeyData}
+        columns={columns}
+        options={options}
+      />
     )
+
   }
 }
 
