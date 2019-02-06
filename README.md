@@ -23,6 +23,8 @@ Once the user sign up and sign in, the user can browse a Whiskey List and add an
 * HTML
 * BootStrap
 * SASS
+* Material-UI Framework
+* Material-UI-DataTables
 
 ### Screenshot
 ![screenshot](https://i.imgur.com/ZXDCfjT.png?1)
