@@ -33,7 +33,11 @@ class WhiskeyIndex extends Component {
   getMuiTheme = () =>
     createMuiTheme({
       overrides: {
-
+        MuiPaper: {
+          root: {
+            marginTop: '30px'
+          }
+        },
         MUIDataTableBodyCell: {
           root: {
             fontSize: '15px'
