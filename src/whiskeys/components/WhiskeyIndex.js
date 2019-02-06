@@ -4,7 +4,11 @@ import { Link, withRouter } from 'react-router-dom'
 import messages from '../messages'
 import './whiskeyIndex.scss'
 import MUIDataTable from 'mui-datatables'
-
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  withStyles
+} from '@material-ui/core/styles'
 
 class WhiskeyIndex extends Component {
   constructor (props) {
@@ -26,6 +30,22 @@ class WhiskeyIndex extends Component {
       .catch(() => flash(messages.getAllFailure, 'flash-error'))
   }
 
+  getMuiTheme = () =>
+    createMuiTheme({
+      overrides: {
+
+        MUIDataTableBodyCell: {
+          root: {
+            fontSize: '15px'
+          }
+        },
+        MUIDataTableHeadCell: {
+          root: {
+            fontSize: '19px'
+          }
+        }
+      }
+    })
 
   render () {
     if (this.state.whiskeys.length == 0) {
@@ -35,7 +55,7 @@ class WhiskeyIndex extends Component {
     const columns = ['View', 'Name', 'Meta Critic', 'Country', 'Whiskey Type']
 
     const options = {
-      responsive: 'scroll',
+      responsive: 'stacked',
       selectableRows: false,
       filter: false
     }
@@ -44,7 +64,7 @@ class WhiskeyIndex extends Component {
     const whiskeyData = this.state.whiskeys.map(alcohol => {
       return (
         data = [
-          <Link key={alcohol.id} to={`whiskeys/${alcohol.id}`}>Click Here</Link>,
+          <Link className='whiskeyLink' key={alcohol.id} to={`whiskeys/${alcohol.id}`}>Click Here</Link>,
           alcohol.name,
           alcohol.meta_critic,
           alcohol.country,
@@ -54,12 +74,14 @@ class WhiskeyIndex extends Component {
     })
 
     return (
-      <MUIDataTable
-        title={'All The Whiskeys'}
-        data={whiskeyData}
-        columns={columns}
-        options={options}
-      />
+      <MuiThemeProvider theme={this.getMuiTheme()}>
+        <MUIDataTable
+          title={'All The Whiskeys'}
+          data={whiskeyData}
+          columns={columns}
+          options={options}
+        />
+      </MuiThemeProvider>
     )
 
   }
