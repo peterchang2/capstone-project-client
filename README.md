@@ -4,9 +4,9 @@
 Once the user sign up and sign in, the user can browse a Whiskey List and add an item to a Favorites List and/or Wish List. In the Favorites List the user can view all the items that were added and delete an item or update the user score. In the Wish List the user can view all the added items and delete an item.
 
 ### Links
-- Front End Repo: https://github.com/peterchang2/capstone-project-client/tree/master/src/whiskeys/components
-- Back End Repo: https://github.com/peterchang2/capstone-project-api
-- Deployed Client: https://peterchang2.github.io/capstone-project-client/
+- Front End Repo: https://github.com/peterchang2/whiskeyverse-project-client
+- Back End Repo: https://github.com/peterchang2/whiskeyverse-project-api
+- Deployed Client: https://peterchang2.github.io/whiskeyverse-project-client/#/
 - Heroku: https://smokeyverse.herokuapp.com/
 
 ### Install Instruction
