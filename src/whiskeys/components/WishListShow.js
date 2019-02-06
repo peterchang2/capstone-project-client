@@ -60,6 +60,7 @@ class WishListShow extends Component {
               <p className="card-text">User-Score: {this.state.wish.user_score}</p>
             </div>
           </div>
+          <button className='btn btn-warning m-1'><Link to='/wishes'>Back</Link></button>
           <button className='btn btn-danger m-2' data-id={wish.id} onClick={this.handleDelete}>Delete</button>
 
           <small className='block'><strong>MetaCritic</strong> score refers to average normalized score of all reviewers who have reported on that whiskiy.</small>
