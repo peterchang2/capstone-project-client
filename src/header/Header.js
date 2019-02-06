@@ -5,12 +5,12 @@ import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
-    <Link className='btn btn-warning m-1' to="/">Home</Link>
-    <Link className='btn btn-danger m-1' to='/whiskeys'>Whiskey List</Link>
-    <Link className='btn btn-primary m-1' to='/favorites'>Favorites</Link>
-    <Link className='btn btn-info m-1' to='/wishes'>Wishes</Link>
-    <Link className='btn btn-success m-1' to="/change-password">Change Password</Link>
-    <Link className='btn btn-danger m-1' to="/sign-out">Sign Out</Link>
+    <Link className='btn header-btn m-1' to="/">Home</Link>
+    <Link className='btn header-btn m-1' to='/whiskeys'>Whiskey List</Link>
+    <Link className='btn header-btn m-1' to='/favorites'>Favorites</Link>
+    <Link className='btn header-btn m-1' to='/wishes'>Wishes</Link>
+    <Link className='btn header-btn m-1' to="/change-password">Change Password</Link>
+    <Link className='btn header-btn m-1' to="/sign-out">Sign Out</Link>
   </React.Fragment>
 )
 
